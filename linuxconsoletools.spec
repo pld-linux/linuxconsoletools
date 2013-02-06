@@ -1,8 +1,8 @@
 Summary:	Tools for connecting joysticks & legacy devices to the kernel's input subsystem
 Name:		linuxconsoletools
 Version:	1.4.4
-Release:	1 
-License:	GPLv2+
+Release:	1
+License:	GPL v2+
 Group:		Applications
 Source0:	http://downloads.sourceforge.net/linuxconsole/%{name}-%{version}.tar.bz2
 # Source0-md5:	4ae531759fb7b2315db941a0bea52884
@@ -17,8 +17,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This package contains utilities for testing and configuring joysticks,
-connecting legacy devices to the kernel's input subsystem (providing 
-support for serial mice, touchscreens etc.), and test the input event 
+connecting legacy devices to the kernel's input subsystem (providing
+support for serial mice, touchscreens etc.), and test the input event
 layer.
 
 %prep
@@ -41,8 +41,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc COPYING README NEWS
-%dir %{_prefix}/share/joystick
+%dir %{_datadir}/joystick
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_prefix}/share/joystick/*
+%attr(755,root,root) %{_datadir}/joystick/*
 %{_mandir}/man1/*
 
