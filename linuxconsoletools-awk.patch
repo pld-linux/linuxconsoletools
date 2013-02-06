@@ -1,0 +1,36 @@
+diff -NurP --minimal linuxconsoletools-1.4.4-orig/docs/list-inputattach-modes linuxconsoletools-1.4.4/docs/list-inputattach-modes
+--- linuxconsoletools-1.4.4-orig/docs/list-inputattach-modes	2011-12-15 16:49:01.000000000 +0100
++++ linuxconsoletools-1.4.4/docs/list-inputattach-modes	2013-02-05 23:22:44.137334582 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/awk -f
++#!/bin/awk -f
+ 
+ /^  --.*-/ {
+     print ".TP";
+diff -NurP --minimal linuxconsoletools-1.4.4-orig/utils/extract linuxconsoletools-1.4.4/utils/extract
+--- linuxconsoletools-1.4.4-orig/utils/extract	2011-12-15 16:49:01.000000000 +0100
++++ linuxconsoletools-1.4.4/utils/extract	2013-02-05 23:23:06.224000673 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/awk -f
++#!/bin/awk -f
+ 
+ # Extracts the settings for a given joystick from the joystick
+ # parameter file, matching the contents of the kernel, name, serial,
+diff -NurP --minimal linuxconsoletools-1.4.4-orig/utils/filter linuxconsoletools-1.4.4/utils/filter
+--- linuxconsoletools-1.4.4-orig/utils/filter	2011-12-15 16:49:01.000000000 +0100
++++ linuxconsoletools-1.4.4/utils/filter	2013-02-05 23:23:38.193999839 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/awk -f
++#!/bin/awk -f
+ 
+ # Filters the joystick parameter file, keeping everything but sections
+ # matching the contents of the kernel, name, serial, vendor and
+diff -NurP --minimal linuxconsoletools-1.4.4-orig/utils/ident linuxconsoletools-1.4.4/utils/ident
+--- linuxconsoletools-1.4.4-orig/utils/ident	2011-12-15 16:49:01.000000000 +0100
++++ linuxconsoletools-1.4.4/utils/ident	2013-02-05 23:23:23.880666880 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/awk -f
++#!/bin/awk -f
+ 
+ BEGIN {
+     FS = "\"";
