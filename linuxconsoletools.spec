@@ -1,12 +1,12 @@
 Summary:	Tools for connecting joysticks & legacy devices to the kernel's input subsystem
 Summary(pl.UTF-8):	Narzędzia podłączające joysticki i tradycyjne urządzenia do podsystemu wejścia jądra
 Name:		linuxconsoletools
-Version:	1.4.7
+Version:	1.4.8
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
 Source0:	http://downloads.sourceforge.net/linuxconsole/%{name}-%{version}.tar.bz2
-# Source0-md5:	fc839ab0dd04718244e17eab9d137ecd
+# Source0-md5:	d46f88de79d45ce1929b73022266f785
 Patch0:		%{name}-awk.patch
 Patch1:		%{name}-wacom.patch
 URL:		http://sourceforge.net/projects/linuxconsole/
@@ -64,6 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/jstest
 %dir %{_datadir}/joystick
 %attr(755,root,root) %{_datadir}/joystick/*
+%attr(755,root,root) /lib/udev/js-set-enum-leds
 %{_mandir}/man1/ffcfstress.1*
 %{_mandir}/man1/ffmvforce.1*
 %{_mandir}/man1/ffset.1*

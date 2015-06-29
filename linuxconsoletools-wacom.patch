@@ -1,8 +1,7 @@
-diff -NurP --minimal linuxconsoletools-1.4.4-orig/utils/inputattach.c linuxconsoletools-1.4.4/utils/inputattach.c
---- linuxconsoletools-1.4.4-orig/utils/inputattach.c	2013-02-05 23:04:47.970695969 +0100
-+++ linuxconsoletools-1.4.4/utils/inputattach.c	2013-02-05 23:05:28.737361573 +0100
-@@ -584,6 +584,17 @@
- 		}
+--- linuxconsoletools-1.4.8/utils/inputattach.c.orig	2015-01-18 15:43:41.000000000 +0100
++++ linuxconsoletools-1.4.8/utils/inputattach.c	2015-06-29 21:48:52.931946242 +0200
+@@ -622,6 +622,17 @@
+ 	return 0;
  }
  
 +static int wacom_v_init(int fd, unsigned long *id, unsigned long *extra)
@@ -19,47 +18,37 @@ diff -NurP --minimal linuxconsoletools-1.4.4-orig/utils/inputattach.c linuxconso
  struct input_types {
  	const char *name;
  	const char *name2;
-@@ -730,6 +741,12 @@
- { "--w8001",		"-w8001",	"Wacom W8001",
- 	B38400, CS8,
- 	SERIO_W8001,		0x00,	0x00,	0,	NULL },
-+{ "--wacom_iv",		"-wacom_iv",	"Wacom protocol 4 tablet",
-+	B9600, CS8,
-+	SERIO_WACOM_IV,		0x00,	0x00,	0,	NULL },
+@@ -771,6 +782,9 @@
+ { "--wacom_iv",		"-wacom_iv",	"Wacom protocol 4 tablet",
+ 	B9600, CS8 | CRTSCTS,
+ 	SERIO_WACOM_IV,		0x00,	0x00,	0,	wacom_iv_init },
 +{ "--wacom_v",		"-wacom_v",	"Wacom protocol 5 tablet",
 +	B9600, CS8,
 +	SERIO_WACOM_V,		0x00,	0x00,	0,	wacom_v_init },
  { NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL }
  };
  
-diff -NurP --minimal linuxconsoletools-1.4.4-orig/utils/serio-ids.h linuxconsoletools-1.4.4/utils/serio-ids.h
---- linuxconsoletools-1.4.4-orig/utils/serio-ids.h	2013-02-05 23:04:47.970695969 +0100
-+++ linuxconsoletools-1.4.4/utils/serio-ids.h	2013-02-05 23:05:28.740694906 +0100
-@@ -128,5 +128,11 @@
- #ifndef SERIO_EASYPEN
- # define SERIO_EASYPEN		0x3e
+--- linuxconsoletools-1.4.8/utils/serio-ids.h.orig	2015-01-18 15:43:41.000000000 +0100
++++ linuxconsoletools-1.4.8/utils/serio-ids.h	2015-06-29 21:50:29.495275523 +0200
+@@ -125,6 +125,9 @@
+ #ifndef SERIO_PSMULT
+ # define SERIO_PS2MULT		0x3c
  #endif
-+#ifndef SERIO_WACOM_IV
-+# define SERIO_WACOM_IV		0x3d
-+#endif
 +#ifndef SERIO_WACOM_V
-+# define SERIO_WACOM_V		0x3e
++# define SERIO_WACOM_V		0x3d
 +#endif
- 
+ #ifndef SERIO_WACOM_IV
+ # define SERIO_WACOM_IV		0x3e
  #endif
-diff -NurP --minimal linuxconsoletools-1.4.4-orig/docs/inputattach.1 linuxconsoletools-1.4.4/docs/inputattach.1
---- linuxconsoletools-1.4.4-orig/docs/inputattach.1	2011-12-17 20:05:48.000000000 +0100
-+++ linuxconsoletools-1.4.4/docs/inputattach.1	2013-02-06 13:12:29.914073972 +0100
-@@ -148,6 +148,12 @@
+--- linuxconsoletools-1.4.8/docs/inputattach.1.orig	2015-01-18 15:43:41.000000000 +0100
++++ linuxconsoletools-1.4.8/docs/inputattach.1	2015-06-29 21:51:16.435273553 +0200
+@@ -146,6 +146,9 @@
+ .BR \-wacom_iv ", " \-\-wacom_iv
+ Wacom protocol IV tablets.
  .TP
- .BR \-zhen ", " \-\-zhen-hua
- Zhen Hua 5-byte protocol.
-+.TP
-+.BR \-wacom_iv ", " \-\-wacom_iv
-+Wacom protocol 4 tablet.
-+.TP
 +.BR \-wacom_v ", " \-\-wacom_v
-+Wacom protocol 5 tablet (Intuos and Intuos2).
- .SH AUTHORS
- .B inputattach
- was written by Vojtech Pavlik and Arndt Schoenewald, and improved by
++Wacom protocol V tablet (Intuos and Intuos2).
++.TP
+ .BR \-war ", " \-\-warrior
+ WingMan Warrior.
+ .TP
