@@ -1,16 +1,17 @@
 Summary:	Tools for connecting joysticks & legacy devices to the kernel's input subsystem
 Summary(pl.UTF-8):	Narzędzia podłączające joysticki i tradycyjne urządzenia do podsystemu wejścia jądra
 Name:		linuxconsoletools
-Version:	1.5.1
+Version:	1.8.1
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
-Source0:	http://downloads.sourceforge.net/linuxconsole/%{name}-%{version}.tar.bz2
-# Source0-md5:	86b5c4e8fb6c91c5b7e9298f7dfe5b3e
+Source0:	https://downloads.sourceforge.net/linuxconsole/%{name}-%{version}.tar.bz2
+# Source0-md5:	e68b6f473d81715e7be836b88fff6afe
 Patch0:		%{name}-awk.patch
 Patch1:		%{name}-wacom.patch
-URL:		http://sourceforge.net/projects/linuxconsole/
-BuildRequires:	SDL-devel
+URL:		https://sourceforge.net/projects/linuxconsole/
+BuildRequires:	SDL2-devel >= 2.0
+BuildRequires:	pkgconfig
 Provides:	joystick = %{version}-%{release}
 Obsoletes:	joystick < 1.2.16-1
 Conflicts:	gpm < 1.20.6-26
@@ -67,6 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/joystick/*
 %attr(755,root,root) /lib/udev/js-set-enum-leds
 /lib/udev/rules.d/80-stelladaptor-joystick.rules
+%{_mandir}/man1/evdev-joystick.1*
 %{_mandir}/man1/ffcfstress.1*
 %{_mandir}/man1/ffmvforce.1*
 %{_mandir}/man1/ffset.1*

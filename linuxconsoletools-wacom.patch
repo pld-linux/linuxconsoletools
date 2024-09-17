@@ -1,7 +1,7 @@
---- linuxconsoletools-1.4.8/utils/inputattach.c.orig	2015-01-18 15:43:41.000000000 +0100
-+++ linuxconsoletools-1.4.8/utils/inputattach.c	2015-06-29 21:48:52.931946242 +0200
-@@ -622,6 +622,17 @@
- 	return 0;
+--- linuxconsoletools-1.8.1/utils/inputattach.c.orig	2024-09-17 20:28:58.478759157 +0200
++++ linuxconsoletools-1.8.1/utils/inputattach.c	2024-09-17 20:30:26.121617688 +0200
+@@ -805,6 +805,17 @@ static int elo_init(int fd,
+ 	return -1;
  }
  
 +static int wacom_v_init(int fd, unsigned long *id, unsigned long *extra)
@@ -18,16 +18,16 @@
  struct input_types {
  	const char *name;
  	const char *name2;
-@@ -771,6 +782,9 @@
- { "--wacom_iv",		"-wacom_iv",	"Wacom protocol 4 tablet",
+@@ -971,6 +982,9 @@ static struct input_types input_types[]
+ { "--wacom_iv",		"-wacom_iv",	"Wacom protocol IV tablet",
  	B9600, CS8 | CRTSCTS,
  	SERIO_WACOM_IV,		0x00,	0x00,	0,	wacom_iv_init },
 +{ "--wacom_v",		"-wacom_v",	"Wacom protocol 5 tablet",
 +	B9600, CS8,
 +	SERIO_WACOM_V,		0x00,	0x00,	0,	wacom_v_init },
- { NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL }
- };
- 
+ { "--warrior",		"-war",		"WingMan Warrior",
+ 	B1200, CS7 | CSTOPB,
+ 	SERIO_WARRIOR,		0x00,	0x00,	1,	warrior_init },
 --- linuxconsoletools-1.4.8/utils/serio-ids.h.orig	2015-01-18 15:43:41.000000000 +0100
 +++ linuxconsoletools-1.4.8/utils/serio-ids.h	2015-06-29 21:50:29.495275523 +0200
 @@ -125,6 +125,9 @@
@@ -40,11 +40,11 @@
  #ifndef SERIO_WACOM_IV
  # define SERIO_WACOM_IV		0x3e
  #endif
---- linuxconsoletools-1.4.8/docs/inputattach.1.orig	2015-01-18 15:43:41.000000000 +0100
-+++ linuxconsoletools-1.4.8/docs/inputattach.1	2015-06-29 21:51:16.435273553 +0200
-@@ -146,6 +146,9 @@
+--- linuxconsoletools-1.8.1/docs/inputattach.1.orig	2024-09-17 20:28:58.478759157 +0200
++++ linuxconsoletools-1.8.1/docs/inputattach.1	2024-09-17 20:30:57.118116432 +0200
+@@ -171,6 +171,9 @@ allows for touch-only or pen and touch d
  .BR \-wacom_iv ", " \-\-wacom_iv
- Wacom protocol IV tablets.
+ Wacom protocol IV tablet.
  .TP
 +.BR \-wacom_v ", " \-\-wacom_v
 +Wacom protocol V tablet (Intuos and Intuos2).

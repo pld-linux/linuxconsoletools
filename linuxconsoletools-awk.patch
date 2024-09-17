@@ -1,12 +1,11 @@
-diff -NurP --minimal linuxconsoletools-1.4.4-orig/docs/list-inputattach-modes linuxconsoletools-1.4.4/docs/list-inputattach-modes
---- linuxconsoletools-1.4.4-orig/docs/list-inputattach-modes	2011-12-15 16:49:01.000000000 +0100
-+++ linuxconsoletools-1.4.4/docs/list-inputattach-modes	2013-02-05 23:22:44.137334582 +0100
+--- linuxconsoletools-1.8.1/docs/list-inputattach-modes.orig	2024-09-17 20:25:40.173166804 +0200
++++ linuxconsoletools-1.8.1/docs/list-inputattach-modes	2024-09-17 20:28:38.145535978 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/awk -f
 +#!/bin/awk -f
  
  /^  --.*-/ {
-     print ".TP";
+     gsub("-", "\\-", $1)
 diff -NurP --minimal linuxconsoletools-1.4.4-orig/utils/extract linuxconsoletools-1.4.4/utils/extract
 --- linuxconsoletools-1.4.4-orig/utils/extract	2011-12-15 16:49:01.000000000 +0100
 +++ linuxconsoletools-1.4.4/utils/extract	2013-02-05 23:23:06.224000673 +0100
